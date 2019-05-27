@@ -1,0 +1,22 @@
+/*Global sittings*/
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*gamePlace*/
+.game-place {
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    background: aqua;
+    display: grid;
+    grid-template-columns: repeat(3, 132px);
+    grid-gap: 3px;
+}
+.box {
+    background: aliceblue;
+    cursor: pointer;
+    text-align: center;
+    font-size: 40px;
+}
