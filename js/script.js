@@ -1,45 +1,72 @@
-//Данные игры
+//Game Object
 let game = {
     isClicked: false,
-    gamerX: "X",
-    gamerO: "O",
+    crossGame: `<i class='fa fa-times'></i>`,
+    roundGame: `<i class='far fa-circle'></i>`,
     cross: [],
     round: [],
-    winningArray: [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[2,5,8],[3,6,9],[1,5,9],[7,5,3]]
+    winning_array: [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+        [1, 4, 7],
+        [2, 5, 8],
+        [3, 6, 9],
+        [1, 5, 9],
+        [3, 5, 7]
+    ]
 };
+//output variable
+let output = document.getElementById("output");
 
-//
-const takeTheInput = data => {
-    if(!game.isClicked){
-        data.innerHTML = game.gamerX;
-        getData(data, game.cross, game.gamerX);
-        game.isClicked = !game.isClicked
-    }else if(game.isClicked){
-        data.innerHTML = game.gamerO;
-        getData(data, game.round, game.gamerO);
-        game.isClicked = !game.isClicked
+//get crosses and rounds from the user
+getData = (data, which_game, player) => {
+    let box = data.getAttribute("data-box");
+    //console.log(box);
+    //switch between clicks
+    if (!game.isClicked) {
+        game.cross.push(box);
+    } else if (game.isClicked) {
+        game.round.push(box);
     }
-};
+    //once clicked you cant click. So to disable the click
+    data.removeAttribute("onclick");
+    checkMoves(which_game, player);
+}
 
-const getData = (data, whichGame, player) => {
-    let box = getData.getAttribute('data-box');
-
-    if(!game.isClicked){
-        game.cross.push(box)
-    }else if(game.isClicked){
-        game.round.push(box)
-    }
-    data.removeAttribute('onclick');
-    checkMoves(whichGame, player)
-};
-
-const checkMoves = (arr, player) => {
-    let compare = arr.map(v => parseInt(v, 10)).sort();
-    for(let i = 0; i < game.winningArray.length; i++){
-        if(
-            compare.includes()
-        ){
-
-        }
+//simlutaneously display the click result and then operate it
+takeTheInput = data => {
+    if (!game.isClicked) {
+        data.innerHTML = game.crossGame;
+        getData(data, game.cross, game.crossGame);
+        game.isClicked = !game.isClicked;
+    } else if (game.isClicked) {
+        data.innerHTML = game.roundGame;
+        getData(data, game.round, game.roundGame);
+        game.isClicked = !game.isClicked;
     }
 }
+
+//check every move and finnaly declare the winner
+function checkMoves(arr, player) {
+    let comp = arr.map(val => parseInt(val, 10)).sort();
+    console.log(comp);
+    for (let i = 0; i < game.winning_array.length; i++) {
+        if (
+            comp.includes(game.winning_array[i][0]) &&
+            comp.includes(game.winning_array[i][1]) &&
+            comp.includes(game.winning_array[i][2])
+        ) {
+            document.getElementById("outGrid").classList.add("disable");
+            output.innerHTML = `${player} wins the Game.<br/> Refresh to play Again <br/> <button onclick=window.location.reload();>Refresh</button>`;
+        }
+    }
+    if (game.cross.length + game.round.length == 9) {
+        output.innerHTML = `Game Draw`;
+    }
+}
+
+//after the game finishes the reload the browser
+const reload = () => {
+    window.location.reload;
+};
