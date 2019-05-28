@@ -4,6 +4,7 @@ let turn = 0;
 let turnWho = document.getElementById('turnWho');
 let box = document.getElementsByClassName('box');
 let result = document.getElementById('result');
+let restart = document.getElementById('restart');
 // Обьявим массив победных комбинаций
 let winningArray = [
     [0, 1, 2],
@@ -36,17 +37,28 @@ gamePlace.onclick = e => {
 
 //Проверка игровых клеток и сравнение их с winningArray
 checkWinner = () => {
-    for (let i = 0; i<winningArray.length; i++){
+    for (let i = 0; i<winningArray.length; i++) {
         if (box[winningArray[i][0]].innerHTML === 'X' && box[winningArray[i][1]].innerHTML === 'X' && box[winningArray[i][2]].innerHTML === 'X') {
             result.innerHTML += 'Победили крестики!';
-            turnWho.style.display = 'none';
-            console.log('Победили крестики')
+            endGame();
         } else if (box[winningArray[i][0]].innerHTML === 'O' && box[winningArray[i][1]].innerHTML === 'O' && box[winningArray[i][2]].innerHTML === 'O') {
             result.innerHTML += 'Победили нолики!';
-            turnWho.style.display = 'none';
-            console.log('Победили нолики')
-        } else if(gamePlace.length === 9)  {
-            console.log('Ничья');
+           endGame();
+        } else {
+            console.log(winningArray.length);
         }
     }
+};
+// UI
+fadeOut = () => {
+    gamePlace.style.opacity = '0';
+};
+gameDisabled = () => {
+    gamePlace.style.display = 'none';
+};
+endGame = () => {
+    turnWho.style.display = 'none';
+    setTimeout(fadeOut, 2000);
+    setTimeout(gameDisabled, 3000);
+    restart.style.display = 'block';
 };

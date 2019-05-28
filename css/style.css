@@ -4,6 +4,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+.wrapper {
+    text-align: center;
+    justify-content: center;
+}
 /*gamePlace*/
 .game-place {
     width: 400px;
@@ -13,10 +17,27 @@
     display: grid;
     grid-template-columns: repeat(3, 132px);
     grid-gap: 3px;
+    opacity: 1;
+    transition: 1s opacity;
 }
 .box {
     background: aliceblue;
     cursor: pointer;
     text-align: center;
     font-size: 40px;
+    padding-top: 60px;
+}
+.fadeOut {
+    display: none;
+}
+#restart {
+    display: none;
+    margin: auto;
+    width: 200px;
+    height: 50px;
+    text-transform: uppercase;
+    border: navajowhite;
+}
+#restart:hover {
+    background: brown;
 }
