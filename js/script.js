@@ -23,6 +23,7 @@ gamePlace.onclick = e => {
             e.target.innerHTML = 'X';
             turnWho.innerHTML = 'Ход ноликов (O)';
             e.target.className = 'box clicked';
+            console.log(document.all);
         } else {
             e.target.innerHTML = 'O';
             turnWho.innerHTML = 'Ход крестиков (Х)';
@@ -60,11 +61,12 @@ endGame = () => {
     setTimeout(fadeOut, 2000);
     setTimeout(gameDisabled, 3000);
     restart.style.display = 'block';
+
 };
 
 // Если ничья, игра предложит начать заново
 noWin = () => {
-    if (document.all[15].className === 'box clicked' && document.all[16].className === 'box clicked' && document.all[17].className === 'box clicked' && document.all[18].className === 'box clicked' && document.all[19].className === 'box clicked' && document.all[20].className === 'box clicked' && document.all[21].className === 'box clicked' && document.all[22].className === 'box clicked' && document.all[23].className === 'box clicked') {
+    if (document.all[13].className === 'box clicked' && document.all[14].className === 'box clicked' && document.all[15].className === 'box clicked' && document.all[16].className === 'box clicked' && document.all[17].className === 'box clicked' && document.all[18].className === 'box clicked' && document.all[19].className === 'box clicked' && document.all[20].className === 'box clicked' && document.all[21].className === 'box clicked') {
         restart.style.display = 'block';
         turnWho.style.display = 'none';
     }
