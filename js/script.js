@@ -23,7 +23,6 @@ gamePlace.onclick = e => {
             e.target.innerHTML = 'X';
             turnWho.innerHTML = 'Ход ноликов (O)';
             e.target.className = 'box clicked';
-            console.log(document.all);
         } else {
             e.target.innerHTML = 'O';
             turnWho.innerHTML = 'Ход крестиков (Х)';
@@ -61,7 +60,6 @@ endGame = () => {
     setTimeout(fadeOut, 2000);
     setTimeout(gameDisabled, 3000);
     restart.style.display = 'block';
-
 };
 
 // Если ничья, игра предложит начать заново
