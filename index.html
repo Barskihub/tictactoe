@@ -6,19 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link
-            rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-            crossorigin="anonymous"
-    />
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
 </head>
 <body>
     <div id="wrapper" class="wrapper">
         <h1 class="header-name">
             Крестики-Нолики
         </h1>
+        <p id="turnWho"></p>
+        <p id="result"></p>
         <div class="game-place" id="gamePlace">
             <div class="box" id="box-1"></div>
             <div class="box" id="box-2"></div>
@@ -30,9 +25,7 @@
             <div class="box" id="box-8"></div>
             <div class="box" id="box-9"></div>
         </div>
-        <p id="result"></p>
-        <p id="turnWho"></p>
-        <button type="button" id="restart" onclick="window.location.reload()">Перезагрузить игру!</button>
+        <button type="button" id="restart" onclick="window.location.reload()">Начать заново!</button>
     </div>
     <script src="js/script.js"></script>
 </body>
