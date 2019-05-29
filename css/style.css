@@ -34,11 +34,11 @@
 }
 #restart {
     display: none;
-    margin: auto;
     width: 200px;
     height: 50px;
     text-transform: uppercase;
     border: navajowhite;
+    margin: 20px auto auto;
 }
 #restart:hover {
     background: brown;
