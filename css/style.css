@@ -43,3 +43,6 @@
 #restart:hover {
     background: brown;
 }
+.disabled {
+    tab-index: 0;
+}

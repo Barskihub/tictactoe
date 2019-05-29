@@ -36,36 +36,35 @@ gamePlace.onclick = e => {
 
 //Проверка игровых клеток и сравнение их с winningArray
 checkWinner = () => {
-    for (let i = 0; i<winningArray.length; i++) {
-        if (box[winningArray[i][0]].innerHTML === 'X' && box[winningArray[i][1]].innerHTML === 'X' && box[winningArray[i][2]].innerHTML === 'X') {
-            result.innerHTML += 'Победили крестики!';
-            endGame();
-        } else if (box[winningArray[i][0]].innerHTML === 'O' && box[winningArray[i][1]].innerHTML === 'O' && box[winningArray[i][2]].innerHTML === 'O') {
-            result.innerHTML += 'Победили нолики!';
-           endGame();
-        } else {
-            noWin();
-        }
+    for (let i = 0; i < winningArray.length; i++) {
+    if (box[winningArray[i][0]].innerHTML === 'X' && box[winningArray[i][1]].innerHTML === 'X' && box[winningArray[i][2]].innerHTML === 'X' ) {
+        result.innerHTML += 'Победили крестики!';
+        endGame();
+    } else if (box[winningArray[i][0]].innerHTML === 'O' && box[winningArray[i][1]].innerHTML === 'O' && box[winningArray[i][2]].innerHTML === 'O') {
+        result.innerHTML += 'Победили нолики!';
+        endGame();
+    } else if (box[winningArray[0][0]].className === 'box clicked' && box[winningArray[0][1]].className === 'box' +
+        ' clicked' && box[winningArray[0][2]].className === 'box clicked' && box[winningArray[1][0]].className === 'box' +
+        ' clicked' && box[winningArray[1][1]].className === 'box clicked' && box[winningArray[1][2]].className === 'box clicked' && box[winningArray[2][0]].className === 'box' +
+        ' clicked' && box[winningArray[2][1]].className === 'box clicked' && box[winningArray[2][2]].className === 'box clicked') {
+        restart.style.display = 'block';
+        turnWho.style.display = 'none';
     }
+}
 };
+
 // UI
 fadeOut = () => {
     gamePlace.style.opacity = '0';
 };
 gameDisabled = () => {
-    gamePlace.style.display = 'none';
-};
-endGame = () => {
-    turnWho.style.display = 'none';
-    setTimeout(fadeOut, 2000);
-    setTimeout(gameDisabled, 3000);
-    restart.style.display = 'block';
-};
-
-// Если ничья, игра предложит начать заново
-noWin = () => {
-    if (document.all[13].className === 'box clicked' && document.all[14].className === 'box clicked' && document.all[15].className === 'box clicked' && document.all[16].className === 'box clicked' && document.all[17].className === 'box clicked' && document.all[18].className === 'box clicked' && document.all[19].className === 'box clicked' && document.all[20].className === 'box clicked' && document.all[21].className === 'box clicked') {
-        restart.style.display = 'block';
-        turnWho.style.display = 'none';
+    for (let i = 13; i < 22; i++) {
+        document.all[i].className = 'box clicked';
     }
 };
+endGame = () => {
+    restart.style.display = 'block';
+    turnWho.style.display = 'none';
+    gameDisabled();
+};
+
