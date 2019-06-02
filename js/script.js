@@ -23,6 +23,7 @@ gamePlace.onclick = e => {
             e.target.innerHTML = 'X';
             turnWho.innerHTML = 'Ход ноликов (O)';
             e.target.className = 'box clicked';
+            console.log(document.body);
         } else {
             e.target.innerHTML = 'O';
             turnWho.innerHTML = 'Ход крестиков (Х)';
@@ -55,8 +56,8 @@ checkWinner = () => {
 
 // UI
 gameDisabled = () => {
-    for (let i = 16; i < 22; i++) {
-        document.all[i].className = 'box clicked';
+    for (let i = 1; i < 10; i++) {
+        document.getElementById('box-'+i).className = 'box clicked';
     }
 };
 endGame = () => {
