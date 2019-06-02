@@ -55,7 +55,7 @@ checkWinner = () => {
 
 // UI
 gameDisabled = () => {
-    for (let i = 13; i < 22; i++) {
+    for (let i = 16; i < 22; i++) {
         document.all[i].className = 'box clicked';
     }
 };
