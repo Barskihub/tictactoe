@@ -23,7 +23,6 @@ gamePlace.onclick = e => {
             e.target.innerHTML = 'X';
             turnWho.innerHTML = 'Ход ноликов (O)';
             e.target.className = 'box clicked';
-            console.log(document.body);
         } else {
             e.target.innerHTML = 'O';
             turnWho.innerHTML = 'Ход крестиков (Х)';
